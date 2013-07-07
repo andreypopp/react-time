@@ -1,0 +1,30 @@
+{
+  "name": "react-time",
+  "version": "0.0.0",
+  "description": "react component for rendering formatted timestamps",
+  "main": "index.js",
+  "dependencies": {
+    "datetime": "~0.0.3"
+  },
+  "devDependencies": {
+    "react-tools": "~0.3.3",
+    "mocha": "~1.9.0",
+    "semver": "~1.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreypopp/react-time.git"
+  },
+  "homepage": "https://github.com/andreypopp/react-time",
+  "keywords": [
+    "react",
+    "time",
+    "component"
+  ],
+  "author": {
+    "name": "Andrey Popp",
+    "email": "8mayday@gmail.com",
+    "url": "http://andreypopp.com"
+  },
+  "license": "MIT"
+}
