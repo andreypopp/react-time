@@ -17,4 +17,10 @@ describe('react-time', function() {
 			assert(/19871987/.test(markup));
 		});
 	});
+
+	it('renders date using relative format', function() {
+		React.renderComponentToString(Timestamp({value: date, relative: true}), function(markup) {
+			assert(/May  8th, 1987/.test(markup));
+		});
+	});
 });
