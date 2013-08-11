@@ -21,9 +21,9 @@ module.exports = React.createClass({
     if (this.props.relative || this.props.format) {
       formatter = this.props.relative ? datetime.formatAgo : datetime.format;
       humanReadable = formatter(value, this.props.format);
-      return <time datetime={machineReadable}>{humanReadable}</time>;
+      return this.transferPropsTo(<time datetime={machineReadable}>{humanReadable}</time>);
     } else {
-      return <time>{machineReadable}</time>;
+      return this.transferPropsTo(<time>{machineReadable}</time>);
     }
   }
 });
