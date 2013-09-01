@@ -3,7 +3,7 @@
  */
 
 var datetime = require('datetime');
-var React = require('react-tools/build/modules/react');
+var React = require('react-tools/build/modules/React');
 
 module.exports = React.createClass({
   render: function() {
@@ -21,9 +21,13 @@ module.exports = React.createClass({
     if (this.props.relative || this.props.format) {
       formatter = this.props.relative ? datetime.formatAgo : datetime.format;
       humanReadable = formatter(value, this.props.format);
-      return this.transferPropsTo(React.DOM.time( {datetime:machineReadable}, humanReadable));
+      return this.transferPropsTo(React.DOM.time(
+          {datetime: machineReadable},
+          [humanReadable]));
     } else {
-      return this.transferPropsTo(React.DOM.time(null, machineReadable));
+      return this.transferPropsTo(React.DOM.time(
+          null,
+          [machineReadable]));
     }
   }
 });

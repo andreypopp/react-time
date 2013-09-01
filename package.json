@@ -7,12 +7,12 @@
     "datetime": "~0.0.3"
   },
   "peerDependencies": {
-    "react-tools": ">= 0.4.1"
+    "react-tools": "0.4.x"
   },
   "devDependencies": {
-    "react-tools": "~0.4.1",
     "mocha": "~1.9.0",
-    "semver": "~1.1.4"
+    "semver": "~1.1.4",
+    "react-tools": "0.4.x"
   },
   "repository": {
     "type": "git",

@@ -1,17 +1,4 @@
 BIN = ./node_modules/.bin
-SRC = $(wildcard *.jsx)
-LIB = $(SRC:%.jsx=%.js)
-REPO = $(shell cat .git/config | grep url | xargs echo | sed -E 's/^url = //g')
-REPONAME = $(shell echo $(REPO) | sed -E 's_.+:([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)\.git_\1/\2_')
-
-build: $(LIB)
-
-%.js: %.jsx
-	@mkdir -p $(@D)
-	@$(BIN)/jsx $< > $@
-
-clean:
-	@rm -f $(LIB)
 
 install link:
 	@npm $@

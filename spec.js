@@ -1,6 +1,6 @@
 var assert = require('assert');
 var Timestamp = require('./index');
-var React = require('react-tools/build/modules/react');
+var React = require('react-tools/build/modules/React');
 
 describe('react-time', function() {
 
