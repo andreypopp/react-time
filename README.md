@@ -1,8 +1,14 @@
+# react-time
+
 Component for [React][1] to render relative and/or formatted dates by using
 `<time>` HTML5 element and preserving machine readable format in `datetime`
 attribute.
 
-Usage:
+## Installation
+
+    % npm install react-time
+
+## Usage
 
     var Timestamp = require('react-time');
 
