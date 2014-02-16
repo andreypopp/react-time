@@ -14,7 +14,10 @@ function formatOffset(d) {
   return (offset > 0 ? '-' : '+') + hour + ':' + min;
 }
 
-module.exports = React.createClass({
+var Time = React.createClass({
+
+  displayName: 'Time',
+
   render: function() {
     var value = this.props.value;
 
@@ -46,3 +49,5 @@ module.exports = React.createClass({
     }
   }
 });
+
+module.exports = Time;
