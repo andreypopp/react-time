@@ -1,3 +1,5 @@
+"use strict";
+
 var datetime = require('datetime');
 var React = require('react');
 

@@ -6,13 +6,16 @@ install link:
 test:
 	@$(BIN)/mocha -t 5000 -b -R spec spec.js
 
-release-patch: build test
+lint:
+	@$(BIN)/jshint index.js
+
+release-patch: lint test
 	@$(call release,patch)
 
-release-minor: build test
+release-minor: lint test
 	@$(call release,minor)
 
-release-major: build test
+release-major: lint test
 	@$(call release,major)
 
 publish:

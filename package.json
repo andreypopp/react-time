@@ -13,7 +13,8 @@
     "semver": "~2.2.1",
     "mocha": "~1.17.1",
     "envify": "~0.2.0",
-    "react": "~0.8.0"
+    "react": "~0.8.0",
+    "jshint": "~2.4.3"
   },
   "repository": {
     "type": "git",
