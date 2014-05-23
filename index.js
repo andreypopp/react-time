@@ -1,18 +1,7 @@
 "use strict";
 
-var datetime = require('datetime');
+var moment = require('moment');
 var React = require('react');
-
-function leadingZero(n, leading) {
-  return n >= 10 ? n : (leading ? leading : '0')+n;
-}
-
-function formatOffset(d) {
-  var offset = d.getTimezoneOffset();
-  var hour = leadingZero(Math.round(Math.abs(offset / 60)));
-  var min = leadingZero(offset % 60);
-  return (offset > 0 ? '-' : '+') + hour + ':' + min;
-}
 
 var Time = React.createClass({
 
@@ -25,10 +14,9 @@ var Time = React.createClass({
       value = new Date(value);
     }
 
-    var machineReadable = datetime.format(value, "%Y-%m-%dT%H:%M:%S");
-    // we can use %z formatter instead of formatOffset when
-    // https://github.com/joehewitt/datetime/pull/8 is merged
-    machineReadable += formatOffset(value);
+    value = moment(value);
+
+    var machineReadable = value.format('YYYY-MM-DDTHH:mm:ssZ');
 
     var props = {};
     for (var k in this.props) {
@@ -40,8 +28,7 @@ var Time = React.createClass({
     }
 
     if (this.props.relative || this.props.format) {
-      var formatter = this.props.relative ? datetime.formatAgo : datetime.format;
-      var humanReadable = formatter(value, this.props.format);
+      var humanReadable = this.props.relative ? value.fromNow() : value.format(this.props.format);
       props.dateTime = machineReadable;
       return React.DOM.time(props, humanReadable);
     } else {

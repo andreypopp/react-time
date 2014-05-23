@@ -12,23 +12,23 @@ describe('react-time', function() {
   });
 
   it('renders date in specified format', function() {
-    var c = Timestamp({value: date, format: "%Y%Y"});
+    var c = Timestamp({value: date, format: "YYYY YYYY"});
     var markup = React.renderComponentToString(c);
     assert(/datetime="1987\-05\-08T05:00:00[+-]\d\d:\d\d"/.test(markup));
-    assert(/19871987/.test(markup));
+    assert(/1987 1987/.test(markup));
   });
 
   it('renders date using relative format', function() {
     var c = Timestamp({value: date, relative: true});
     var markup = React.renderComponentToString(c);
     assert(/datetime="1987\-05\-08T05:00:00[+-]\d\d:\d\d"/.test(markup));
-    assert(/May  8th, 1987/.test(markup));
+    assert(/27 years ago/.test(markup));
   });
 
   it('transfers props down to DOM element', function() {
     var c = Timestamp({value: date, relative: true, className: 'className'});
     var markup = React.renderComponentToString(c);
-    assert(/May  8th, 1987/.test(markup));
+    assert(/27 years ago/.test(markup));
     assert(/class="className"/.test(markup));
   });
 });

@@ -18,7 +18,7 @@ attribute.
             wasDate = new Date("Thu Jul 18 2013 15:48:59 GMT+0400");
         return (
           <div>
-            <p>Today is <Timestamp value={now} format="%Y/%m/%d" /></p>
+            <p>Today is <Timestamp value={now} format="YYYY/mm/dd" /></p>
             <p>This was <Timestamp value={wasDate} relative /></p>
           </div>
         );
