@@ -10,11 +10,9 @@ var Time = React.createClass({
   render: function() {
     var value = this.props.value;
 
-    if (Object.prototype.toString.call(value) == '[object String]') {
-      value = new Date(value);
+    if (!moment.isMoment(value)) {
+      value = moment(value);
     }
-
-    value = moment(value);
 
     var machineReadable = value.format('YYYY-MM-DDTHH:mm:ssZ');
 
