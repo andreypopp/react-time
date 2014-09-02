@@ -31,4 +31,16 @@ describe('react-time', function() {
     assert(/27 years ago/.test(markup));
     assert(/class="className"/.test(markup));
   });
+
+  it('allows passing milliseconds from epoch', function() {
+    var c = Timestamp({value: 1});
+    var markup = React.renderComponentToString(c);
+    assert(/1970\-01\-01/.test(markup));
+  });
+
+  it('allows passing string', function() {
+    var c = Timestamp({value: '1970-01-01'});
+    var markup = React.renderComponentToString(c);
+    assert(/1970\-01\-01/.test(markup));
+  });
 });
