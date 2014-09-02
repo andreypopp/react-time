@@ -1,18 +1,18 @@
 {
   "name": "react-time",
-  "version": "0.8.1",
+  "version": "1.0.0",
   "description": "react component for rendering formatted timestamps",
   "main": "index.js",
   "dependencies": {
-    "moment": "~2.6.0"
+    "moment": "~2.8.3"
   },
   "peerDependencies": {
-    "react": ">=0.10.0"
+    "react": ">=0.11.2"
   },
   "devDependencies": {
     "semver": "~2.2.1",
     "mocha": "~1.17.1",
-    "react": "~0.10.0",
+    "react": "~0.11.2",
     "jshint": "~2.4.3"
   },
   "repository": {
