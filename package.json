@@ -4,15 +4,15 @@
   "description": "react component for rendering formatted timestamps",
   "main": "index.js",
   "dependencies": {
-    "moment": "~2.8.3"
+    "moment": "^2.8.3"
   },
   "peerDependencies": {
-    "react": ">=0.11.2"
+    "react": ">=0.10.0"
   },
   "devDependencies": {
     "semver": "~2.2.1",
     "mocha": "~1.17.1",
-    "react": "~0.11.2",
+    "react": "~0.10.0",
     "jshint": "~2.4.3"
   },
   "repository": {
