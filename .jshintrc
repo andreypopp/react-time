@@ -4,6 +4,7 @@
   "asi": true,
   "expr": true,
   "globalstrict": true,
+  "esnext": true,
   "globals": {
     "Buffer": false,
     "require": false,

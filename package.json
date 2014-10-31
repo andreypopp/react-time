@@ -4,16 +4,17 @@
   "description": "react component for rendering formatted timestamps",
   "main": "index.js",
   "dependencies": {
-    "moment": "^2.8.3"
+    "moment": "^2.8.3",
+    "reactify": "^0.15.2"
   },
   "peerDependencies": {
     "react": ">=0.10.0"
   },
   "devDependencies": {
-    "semver": "~2.2.1",
+    "jsxhint": "^0.5.0",
     "mocha": "~1.17.1",
-    "react": "~0.10.0",
-    "jshint": "~2.4.3"
+    "mochify": "^1.6.0",
+    "react": "~0.12.0"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,16 @@
   },
   "scripts": {
     "test": "make test"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
   },
   "license": "MIT"
 }

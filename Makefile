@@ -4,10 +4,13 @@ install link:
 	@npm $@
 
 test:
-	@$(BIN)/mocha -t 5000 -b -R spec spec.js
+	@$(BIN)/mochify -R dot ./spec.js
+
+ci:
+	@$(BIN)/mochify --watch -R dot ./spec.js
 
 lint:
-	@$(BIN)/jshint index.js
+	@$(BIN)/jsxhint --force-transform index.js
 
 release-patch: lint test
 	@$(call release,patch)
