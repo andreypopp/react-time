@@ -5,6 +5,7 @@ var React = require('react');
 
 // load fr locale for tests
 require('moment/locale/fr');
+// set the default locale to "en"
 moment.locale('en');
 
 describe('react-time', function() {
