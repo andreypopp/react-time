@@ -1,5 +1,6 @@
 var assert = require('assert');
 var Timestamp = require('./index');
+var moment = require('moment');
 var React = require('react');
 
 // load fr locale for tests
@@ -51,6 +52,12 @@ describe('react-time', function() {
 
   it('allows passing string', function() {
     var c = React.createElement(Timestamp, {value: '1970-01-01'});
+    var markup = React.renderToString(c);
+    assert(/1970\-01\-01/.test(markup));
+  });
+
+  it('allows passing moment instance', function() {
+    var c = React.createElement(Timestamp, {value: moment('1970-01-01')});
     var markup = React.renderToString(c);
     assert(/1970\-01\-01/.test(markup));
   });
