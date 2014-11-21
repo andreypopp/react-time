@@ -14,7 +14,8 @@ var Time = React.createClass({
     ]),
     relative: React.PropTypes.bool,
     format: React.PropTypes.string,
-    locale: React.PropTypes.string
+    locale: React.PropTypes.string,
+    globalLocale: React.PropTypes.bool
   },
 
   render() {
@@ -22,7 +23,11 @@ var Time = React.createClass({
     var {value, relative, format, locale, ...props} = this.props;
 
     if (!moment.isMoment(value)) {
-      value = moment(value).locale(locale);
+      value = moment(value);
+    }
+
+    if (locale) {
+      value = value.locale(locale);
     }
 
     var machineReadable = value.format('YYYY-MM-DDTHH:mm:ssZ');
@@ -37,12 +42,6 @@ var Time = React.createClass({
     } else {
       return <time {...props}>{machineReadable}</time>;
     }
-  },
-
-  getDefaultProps() {
-    return {
-      locale: 'en'
-    };
   }
 });
 

@@ -5,6 +5,7 @@ var React = require('react');
 
 // load fr locale for tests
 require('moment/locale/fr');
+moment.locale('en');
 
 describe('react-time', function() {
   var date = new Date(1987, 4, 8, 5, 0, 0, 0);
