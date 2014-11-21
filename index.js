@@ -14,8 +14,7 @@ var Time = React.createClass({
     ]),
     relative: React.PropTypes.bool,
     format: React.PropTypes.string,
-    locale: React.PropTypes.string,
-    globalLocale: React.PropTypes.bool
+    locale: React.PropTypes.string
   },
 
   render() {
