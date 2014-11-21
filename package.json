@@ -1,6 +1,6 @@
 {
   "name": "react-time",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "react component for rendering formatted timestamps",
   "main": "index.js",
   "dependencies": {
