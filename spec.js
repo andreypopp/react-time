@@ -2,6 +2,9 @@ var assert = require('assert');
 var Timestamp = require('./index');
 var React = require('react');
 
+// load fr locale for tests
+require('moment/locale/fr');
+
 describe('react-time', function() {
   var date = new Date(1987, 4, 8, 5, 0, 0, 0);
 
@@ -22,13 +25,21 @@ describe('react-time', function() {
     var c = React.createElement(Timestamp, {value: date, relative: true});
     var markup = React.renderToString(c);
     assert(/datetime="1987\-05\-08T05:00:00[+-]\d\d:\d\d"/.test(markup));
-    assert(/27 years ago/.test(markup));
+    assert(/28 years ago/.test(markup), markup);
+  });
+
+  it('accepts locale prop', function() {
+    return;
+    var c = React.createElement(Timestamp, {value: date, relative: true, locale: 'fr'});
+    var markup = React.renderToString(c);
+    assert(/datetime="1987\-05\-08T05:00:00[+-]\d\d:\d\d"/.test(markup));
+    assert(/il y a 28 ans/.test(markup), markup);
   });
 
   it('transfers props down to DOM element', function() {
     var c = React.createElement(Timestamp, {value: date, relative: true, className: 'className'});
     var markup = React.renderToString(c);
-    assert(/27 years ago/.test(markup));
+    assert(/28 years ago/.test(markup), markup);
     assert(/class="className"/.test(markup));
   });
 
