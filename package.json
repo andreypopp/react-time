@@ -3,11 +3,9 @@
   "version": "2.2.0",
   "description": "react component for rendering formatted timestamps",
   "main": "dist/index.js",
-  "dependencies": {
-    "moment": "^2.8.3"
-  },
   "peerDependencies": {
-    "react": "~0.12.0"
+    "react": "~0.12.0",
+    "moment": "^2.8.3"
   },
   "devDependencies": {
     "jsxhint": "^0.5.0",
