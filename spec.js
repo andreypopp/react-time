@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Timestamp = require('./index');
+var Timestamp = require('./dist/index');
 var moment = require('moment');
 var React = require('react');
 

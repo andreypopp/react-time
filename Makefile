@@ -23,6 +23,7 @@ release-major: lint test
 
 publish:
 	git push --tags origin HEAD:master
+	@$(BIN)/jsx --harmony src/index.jsx > dist/index.js
 	npm publish
 
 define release
