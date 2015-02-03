@@ -14,12 +14,17 @@ var Time = React.createClass({
     ]),
     relative: React.PropTypes.bool,
     format: React.PropTypes.string,
+    titleFormat: React.PropTypes.string,
     locale: React.PropTypes.string
   },
-
+  getDefaultProps: function() {
+    return {
+      titleFormat: 'YYYY-MM-DD HH:mm'
+    };
+  },
   render() {
     /* jshint eqnull:true */
-    var {value, relative, format, locale, ...props} = this.props;
+    var {value, relative, format, locale, titleFormat, ...props} = this.props;
 
     if (!moment.isMoment(value)) {
       value = moment(value);
@@ -34,7 +39,7 @@ var Time = React.createClass({
     if (relative || format) {
       var humanReadable = relative ? value.fromNow() : value.format(format);
       return (
-        <time {...props} dateTime={machineReadable}>
+        <time {...props} dateTime={machineReadable} title={relative ? value.format(titleFormat) : null}>
           {humanReadable}
         </time>
       );

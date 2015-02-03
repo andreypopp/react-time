@@ -31,6 +31,24 @@ describe('react-time', function() {
     assert(/28 years ago/.test(markup), markup);
   });
 
+  it('renders a title when using relative format', function() {
+    var c = React.createElement(Timestamp, {value: date, relative: true});
+    var markup = React.renderToString(c);
+    assert(/title="1987\-05\-08 05:00"/.test(markup));
+  });
+
+  it('renders the title in specified format', function() {
+    var c = React.createElement(Timestamp, {value: date, relative: true, titleFormat: 'YYYY'});
+    var markup = React.renderToString(c);
+    assert(/title="1987"/.test(markup));
+  });
+
+  it('does not render a title using absolute format', function() {
+    var c = React.createElement(Timestamp, {value: date, relative: false, titleFormat: 'YYYY'});
+    var markup = React.renderToString(c);
+    assert.notStrictEqual(/title/.test(markup), true);
+  });
+
   it('accepts locale prop', function() {
     return;
     var c = React.createElement(Timestamp, {value: date, relative: true, locale: 'fr'});
