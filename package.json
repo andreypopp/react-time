@@ -4,14 +4,14 @@
   "description": "react component for rendering formatted timestamps",
   "main": "dist/index.js",
   "peerDependencies": {
-    "react": "~0.12.0",
+    "react": ">= 0.12.0, < 0.14.0",
     "moment": "^2.8.3"
   },
   "devDependencies": {
     "jsxhint": "^0.5.0",
     "mocha": "~1.17.1",
     "mochify": "^2.1.0",
-    "react": "~0.12.0",
+    "react": ">= 0.12.0, < 0.14.0",
     "moment": "^2.8.3",
     "react-tools": "^0.12.2",
     "reactify": "^0.17.0"
