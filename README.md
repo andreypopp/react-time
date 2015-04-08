@@ -25,4 +25,4 @@ attribute.
       }
     });
 
-[1]: https://facebool.github.io/react/
+[1]: https://facebook.github.io/react/
