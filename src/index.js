@@ -24,7 +24,7 @@ var Time = React.createClass({
   },
   render() {
     /* jshint eqnull:true */
-    var {value, relative, format, locale, titleFormat, ifValueFalsy, ...props} = this.props;
+    var {value, relative, format, locale, titleFormat, ...props} = this.props;
 
     if (!value) {
       return <span>Invalid date</span>;
