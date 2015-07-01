@@ -11,7 +11,7 @@ var Time = React.createClass({
       React.PropTypes.instanceOf(Date),
       React.PropTypes.number,
       React.PropTypes.string
-    ]),
+    ]).isRequired,
     relative: React.PropTypes.bool,
     format: React.PropTypes.string,
     titleFormat: React.PropTypes.string,
