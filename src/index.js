@@ -15,7 +15,8 @@ var Time = React.createClass({
     relative: React.PropTypes.bool,
     format: React.PropTypes.string,
     titleFormat: React.PropTypes.string,
-    locale: React.PropTypes.string
+    locale: React.PropTypes.string,
+    falsyValue: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
@@ -24,7 +25,11 @@ var Time = React.createClass({
   },
   render() {
     /* jshint eqnull:true */
-    var {value, relative, format, locale, titleFormat, ...props} = this.props;
+    var {value, relative, format, locale, titleFormat, ifValueFalsy, ...props} = this.props;
+
+    if (!value) {
+      return <span>{ifValueFalsy || 'unknown date'}</span>;
+    }
 
     if (!moment.isMoment(value)) {
       value = moment(value);

@@ -20,6 +20,7 @@ attribute.
           <div>
             <p>Today is <Timestamp value={now} format="YYYY/MM/DD" /></p>
             <p>This was <Timestamp value={wasDate} titleFormat="YYYY/MM/DD HH:mm" relative /></p>
+            <p>This date is <Timestamp ifValueFalsy='unknown' />.</p>
           </div>
         );
       }

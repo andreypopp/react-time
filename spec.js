@@ -81,4 +81,16 @@ describe('react-time', function() {
     var markup = React.renderToString(c);
     assert(/1970\-01\-01/.test(markup));
   });
+
+  it('does not render current date if value is falsy', function() {
+    var c = React.createElement(Timestamp, {});
+    var markup = React.renderToString(c);
+    assert(/unknown date/.test(markup));
+  });
+
+  it('shows the configured string if value is falsy', function() {
+    var c = React.createElement(Timestamp, {ifValueFalsy: 'never'});
+    var markup = React.renderToString(c);
+    assert(/never/.test(markup));
+  });
 });
