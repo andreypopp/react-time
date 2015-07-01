@@ -11,7 +11,7 @@ var Time = React.createClass({
       React.PropTypes.instanceOf(Date),
       React.PropTypes.number,
       React.PropTypes.string
-    ]),
+    ]).isRequired,
     relative: React.PropTypes.bool,
     format: React.PropTypes.string,
     titleFormat: React.PropTypes.string,
@@ -25,6 +25,10 @@ var Time = React.createClass({
   render() {
     /* jshint eqnull:true */
     var {value, relative, format, locale, titleFormat, ...props} = this.props;
+
+    if (!value) {
+      return <span>Invalid date</span>;
+    }
 
     if (!moment.isMoment(value)) {
       value = moment(value);
