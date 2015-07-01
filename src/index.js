@@ -16,7 +16,7 @@ var Time = React.createClass({
     format: React.PropTypes.string,
     titleFormat: React.PropTypes.string,
     locale: React.PropTypes.string,
-    falsyValue: React.PropTypes.string
+    ifValueFalsy: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
