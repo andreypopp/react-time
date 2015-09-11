@@ -8,6 +8,10 @@ import React, {PropTypes}   from 'react';
 export default class Time extends React.Component {
 
   static propTypes = {
+
+    /**
+     * Value.
+     */
     value: PropTypes.oneOfType([
       PropTypes.instanceOf(moment.fn.constructor),
       PropTypes.instanceOf(Date),
@@ -15,30 +19,50 @@ export default class Time extends React.Component {
       PropTypes.string
     ]).isRequired,
 
+    /**
+     * If component should output the relative time difference between now and
+     * passed value.
+     */
     relative: PropTypes.bool,
 
+    /**
+     * Datetime format which is used to output date to DOM.
+     */
     format: PropTypes.string,
 
     /**
-     * Datetime format which is used to parse 
+     * Datetime format which is used to parse value if it's being a string.
      */
     valueFormat: PropTypes.string,
 
+    /**
+     * Datetime format which is used to set title attribute on relative or
+     * formatted dates.
+     */
     titleFormat: PropTypes.string,
 
-    locale: PropTypes.string
+    /**
+     * Locale.
+     */
+    locale: PropTypes.string,
+
+    /**
+     * Component to use.
+     */
+    Component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   };
 
 
   static defaultProps = {
-    titleFormat: 'YYYY-MM-DD HH:mm'
+    titleFormat: 'YYYY-MM-DD HH:mm',
+    Component: 'time'
   };
 
   render() {
     let {
       value, locale, relative,
       format, valueFormat, titleFormat,
-      ...props
+      Component, ...props
     } = this.props;
 
     if (!value) {
@@ -58,12 +82,12 @@ export default class Time extends React.Component {
     if (relative || format) {
       let humanReadable = relative ? value.fromNow() : value.format(format);
       return (
-        <time
+        <Component
           {...props}
           dateTime={machineReadable}
           title={relative ? value.format(titleFormat) : null}>
           {humanReadable}
-        </time>
+        </Component>
       );
     } else {
       return <time {...props}>{machineReadable}</time>;
