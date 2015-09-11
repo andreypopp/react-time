@@ -14,7 +14,7 @@ test::
 	@NODE_ENV=test $(NODE) $(BIN)/mocha --compilers js:babel/register -- $(TESTS)
 
 ci::
-	@NODE_ENV=test $(NODE) $(BIN)/mocha --compilers js:babel/register --watch -- $(TESTS) 
+	@NODE_ENV=test $(NODE) $(BIN)/mocha --compilers js:babel/register --watch -- $(TESTS)
 
 lint::
 	@$(BIN)/eslint ./src/
