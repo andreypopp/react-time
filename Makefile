@@ -1,40 +1,52 @@
-BIN = ./node_modules/.bin
-TEST_OPTIONS = -R dot --transform [ reactify --harmony ]
+.DELETE_ON_ERROR:
 
-install link:
-	@npm $@
+BABEL_OPTIONS = --stage 0
+BIN           = ./node_modules/.bin
+TESTS         = $(shell find src -path '*/__tests__/*-test.js')
+SRC           = $(filter-out $(TESTS), $(shell find src -name '*.js'))
+LIB           = $(SRC:src/%=lib/%)
+NODE          = $(BIN)/babel-node $(BABEL_OPTIONS)
 
-test:
-	@$(BIN)/mochify $(TEST_OPTIONS) ./spec.js
+build:
+	@$(MAKE) -j 8 $(LIB)
 
-ci:
-	@$(BIN)/mochify $(TEST_OPTIONS) --watch ./spec.js
+test::
+	@NODE_ENV=test $(NODE) $(BIN)/mocha --compilers js:babel/register -- $(TESTS)
 
-lint:
-	@$(BIN)/jsxhint --force-transform src/index.js
+ci::
+	@NODE_ENV=test $(NODE) $(BIN)/mocha --compilers js:babel/register --watch -- $(TESTS) 
 
-release-patch: lint test build
-	@$(call release,patch)
+lint::
+	@$(BIN)/eslint ./src/
 
-release-minor: lint test build
-	@$(call release,minor)
-
-release-major: lint test build
-	@$(call release,major)
-
-dist/index.js: src/index.js
-	@mkdir -p $(@D)
-	@$(BIN)/jsx --harmony $< > $@
-
-build: dist/index.js
-
-clean:
-	@rm -rf ./dist
+version-major version-minor version-patch: lint test
+	@npm version $(@:version-%=%)
 
 publish: build
-	git push --tags origin HEAD:master
-	npm publish
+	@git push --tags origin HEAD:master
+	@npm publish
 
-define release
-	npm version $(1)
-endef
+lib/%: src/%
+	@echo "Building $<"
+	@mkdir -p $(@D)
+	@$(BIN)/babel $(BABEL_OPTIONS) -o $@ $<
+
+example: build
+	@(cd example; $(BIN)/webpack --hide-modules)
+
+watch-example: build
+	@(cd example; $(BIN)/webpack --watch --hide-modules)
+
+publish-example: build
+	@(cd example;\
+		rm -rf .git;\
+		git init .;\
+		$(BIN)/webpack -p;\
+		git checkout -b gh-pages;\
+		git add .;\
+		git commit -m 'Update';\
+		git push -f git@github.com:andreypopp/react-fa.git gh-pages;\
+	)
+
+clean:
+	@rm -rf lib
