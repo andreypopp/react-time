@@ -4,7 +4,7 @@
   "description": "react component for rendering formatted timestamps",
   "main": "lib/index.js",
   "peerDependencies": {
-    "react": "^0.14.0-rc1 || >= 0.13.0, < 0.15.0",
+    "react": ">= 0.13.0",
     "moment": "^2.8.3"
   },
   "devDependencies": {
@@ -16,8 +16,8 @@
     "mocha": "^1.17.1",
     "moment": "^2.8.3",
     "power-assert": "^1.0.0",
-    "react": "^0.14.0-rc1 || >= 0.13.0, < 0.15.0",
-    "react-dom": "^0.14.0"
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
   },
   "repository": {
     "type": "git",
