@@ -30,8 +30,9 @@ describe('react-time', function() {
 
   it('renders date using relative format', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} relative />);
+    let expected = new RegExp(moment("1987-05-08", "YYYY-MM-DD").fromNow());
     assert(/datetime="1987\-05\-08T\d\d:\d\d:\d\d[+-]\d\d:\d\d"/.test(markup));
-    assert(/28 years ago/.test(markup), markup);
+    assert(expected.test(markup), markup);
   });
 
   it('renders a title when using relative format', function() {
@@ -51,13 +52,15 @@ describe('react-time', function() {
 
   it('accepts locale prop', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} relative locale="fr" />);
+    let expected = new RegExp(moment("1987-05-08", "YYYY-MM-DD").locale("fr").fromNow());
     assert(/datetime="1987\-05\-08T05:00:00[+-]\d\d:\d\d"/.test(markup));
-    assert(/il y a 28 ans/.test(markup), markup);
+    assert(expected.test(markup), markup);
   });
 
   it('transfers props down to DOM element', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} relative className="className" />);
-    assert(/28 years ago/.test(markup), markup);
+    let expected = new RegExp(moment("1987-05-08", "YYYY-MM-DD").fromNow());
+    assert(expected.test(markup), markup);
     assert(/class="className"/.test(markup));
   });
 
