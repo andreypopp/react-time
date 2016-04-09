@@ -1,6 +1,6 @@
 {
   "name": "react-time",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "react component for rendering formatted timestamps",
   "main": "lib/index.js",
   "eslintConfig": {
