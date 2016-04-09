@@ -2,8 +2,8 @@
  * @copyright 2015, Andrey Popp <8mayday@gmail.com>
  */
 
-import moment               from 'moment';
-import React, {PropTypes}   from 'react';
+import moment from 'moment';
+import React, {PropTypes} from 'react';
 
 export default class Time extends React.Component {
 
