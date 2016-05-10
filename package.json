@@ -6,11 +6,6 @@
   "eslintConfig": {
     "extends": "prometheusresearch"
   },
-  "babel": {
-    "presets": [
-      "prometheusresearch"
-    ]
-  },
   "peerDependencies": {
     "react": ">=0.13.0 <16.0.0",
     "moment": "^2.8.3"
