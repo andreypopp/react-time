@@ -83,9 +83,9 @@ export default class Time extends React.Component {
       let humanReadable = relative ? value.fromNow() : value.format(format);
       return (
         <Component
+          title={relative ? value.format(titleFormat) : null}
           {...props}
-          dateTime={machineReadable}
-          title={relative ? value.format(titleFormat) : null}>
+          dateTime={machineReadable}>
           {humanReadable}
         </Component>
       );
