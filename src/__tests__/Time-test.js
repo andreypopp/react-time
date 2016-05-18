@@ -66,7 +66,7 @@ describe('react-time', function() {
 
   it('allows passing milliseconds from epoch', function() {
     let markup = ReactDOMServer.renderToString(<Time value={1} />);
-    assert(/1970\-01\-01/.test(markup));
+    assert(/1970\-01\-01/.test(markup) || /1969\-12\-31/.test(markup));
   });
 
   it('allows passing string', function() {
@@ -87,5 +87,15 @@ describe('react-time', function() {
   it('does not render current date if value is falsy', function() {
     let markup = ReactDOMServer.renderToString(<Time />);
     assert(/Invalid date/.test(markup));
+  });
+
+  it('allows for overriding the title', function() {
+    let markup = ReactDOMServer.renderToString(<Time value={date} title="override" />);
+    assert(/title="override"/.test(markup));
+  });
+
+  it('allows for overriding the title when using relative format', function() {
+    let markup = ReactDOMServer.renderToString(<Time value={date} title="override" relative />);
+    assert(/title="override"/.test(markup));
   });
 });
