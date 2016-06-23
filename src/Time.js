@@ -26,6 +26,12 @@ export default class Time extends React.Component {
     relative: PropTypes.bool,
 
     /**
+     * If set to true will use the utc mode from moment and display all dates
+     * in utc disregarding the users locale
+     */
+    utc: PropTypes.bool,
+
+    /**
      * Datetime format which is used to output date to DOM.
      */
     format: PropTypes.string,
@@ -60,7 +66,7 @@ export default class Time extends React.Component {
 
   render() {
     let {
-      value, locale, relative,
+      value, locale, relative, utc,
       format, valueFormat, titleFormat,
       Component, ...props
     } = this.props;
@@ -75,6 +81,10 @@ export default class Time extends React.Component {
 
     if (locale) {
       value = value.locale(locale);
+    }
+
+    if (utc) {
+      value = value.utc();
     }
 
     let machineReadable = value.format('YYYY-MM-DDTHH:mm:ssZ');
