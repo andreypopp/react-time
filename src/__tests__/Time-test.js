@@ -15,7 +15,7 @@ import 'moment/locale/fr';
 moment.locale('en');
 
 describe('react-time', function() {
-  let date = new Date(1987, 4, 8, 5, 0, 0, 0);
+  let date = new Date(Date.UTC(1987, 4, 8, 5, 0, 0, 0));
 
   it('renders date', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} />);
@@ -28,6 +28,13 @@ describe('react-time', function() {
     assert(/1987 1987/.test(markup));
   });
 
+  it('renders date using utc format', function() {
+    let markup = ReactDOMServer.renderToString(<Time value={date} utc format="YYYY-MM-DDTHH:mm:ssZ"/>);
+    let expected = /1987-05-08T05:00:00\+00:00/;
+    assert(/datetime="1987\-05\-08T\d\d:\d\d:\d\d[+-]\d\d:\d\d"/.test(markup));
+    assert(expected.test(markup), markup);
+  });
+
   it('renders date using relative format', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} relative />);
     let expected = new RegExp(moment("1987-05-08", "YYYY-MM-DD").fromNow());
@@ -37,7 +44,7 @@ describe('react-time', function() {
 
   it('renders a title when using relative format', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} relative />);
-    assert(/title="1987\-05\-08 05:00"/.test(markup));
+    assert(/title="1987\-05\-08 07:00"/.test(markup));
   });
 
   it('renders the title in specified format', function() {
@@ -53,7 +60,7 @@ describe('react-time', function() {
   it('accepts locale prop', function() {
     let markup = ReactDOMServer.renderToString(<Time value={date} relative locale="fr" />);
     let expected = new RegExp(moment("1987-05-08", "YYYY-MM-DD").locale("fr").fromNow());
-    assert(/datetime="1987\-05\-08T05:00:00[+-]\d\d:\d\d"/.test(markup));
+    assert(/datetime="1987\-05\-08T07:00:00[+-]\d\d:\d\d"/.test(markup));
     assert(expected.test(markup), markup);
   });
 
